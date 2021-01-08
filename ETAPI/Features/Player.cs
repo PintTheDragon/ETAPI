@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using PluginFramework.Classes;
 using UnityEngine;
 using VirtualBrightPlayz.SCP_ET.Player;
+using VirtualBrightPlayz.SCP_ET.ServerGroups;
 
 namespace ETAPI.Features
 {
@@ -83,12 +84,20 @@ namespace ETAPI.Features
         /// <summary>
         /// Gets or sets the player's name.
         /// </summary>
-        public string PlayerName => this.PlayerController.NetworkplayerName;
+        public string PlayerName
+        {
+            get => this.PlayerController.NetworkplayerName;
+            set => this.PlayerController.NetworkplayerName = value;
+        }
 
         /// <summary>
         /// Gets or sets the player's group.
         /// </summary>
-        public string PlayerGroup => this.PlayerController.NetworkplayerGroup;
+        public string PlayerGroup
+        {
+            get => this.PlayerController.NetworkplayerGroup;
+            set => this.PlayerController.NetworkplayerGroup = value;
+        }
 
         /// <summary>
         /// Gets the player's controller.
@@ -101,7 +110,11 @@ namespace ETAPI.Features
         /// <summary>
         /// Gets or sets the player's health.
         /// </summary>
-        public float Health => this.PlayerController.healthController.NetworkHealth;
+        public float Health
+        {
+            get => this.PlayerController.healthController.NetworkHealth;
+            set => this.PlayerController.healthController.NetworkHealth = value;
+        }
 
         /// <summary>
         /// Gets or sets the player's current role.
@@ -144,60 +157,107 @@ namespace ETAPI.Features
         /// <summary>
         /// Gets the player's transform.
         /// </summary>
-        public Transform Transform
-        {
-            get => this.GameObject.transform;
-        }
+        public Transform Transform => this.GameObject.transform;
 
         /// <summary>
         /// Gets or sets the player's position.
         /// </summary>
-        public Vector3 Position => this.Transform.position;
+        public Vector3 Position
+        {
+            get => this.Transform.position;
+            set => this.Transform.position = value;
+        }
 
         /// <summary>
         /// Gets or sets the player's rotation.
         /// </summary>
-        public Quaternion Rotation => this.Transform.rotation;
+        public Quaternion Rotation
+        {
+            get => this.Transform.rotation;
+            set => this.Transform.rotation = value;
+        }
 
         /// <summary>
         /// Gets or sets the player's scale.
         /// </summary>
-        public Vector3 Scale => this.Transform.localScale;
+        public Vector3 Scale
+        {
+            get => this.Transform.localScale;
+            set => this.Transform.localScale = value;
+        }
 
         /// <summary>
         /// Gets or sets if the player is in god mode.
         /// </summary>
-        public bool GodMode => this.PlayerController.Network_godMode;
+        public bool GodMode
+        {
+            get => this.PlayerController.Network_godMode;
+            set => this.PlayerController.Network_godMode = value;
+        }
 
         /// <summary>
         /// Gets or sets the player's walk speed.
         /// </summary>
-        public float WalkSpeed => this.PlayerController.NetworkwalkSpeed;
-        
+        public float WalkSpeed
+        {
+            get => this.PlayerController.NetworkwalkSpeed;
+            set => this.PlayerController.NetworkwalkSpeed = value;
+        }
+
         /// <summary>
         /// Gets or sets the player's sprint speed.
         /// </summary>
-        public float SprintSpeed => this.PlayerController.NetworksprintSpeed;
-        
+        public float SprintSpeed
+        {
+            get => this.PlayerController.NetworksprintSpeed;
+            set => this.PlayerController.NetworksprintSpeed = value;
+        }
+
         /// <summary>
         /// Gets or sets the player's crouch speed.
         /// </summary>
-        public float CrouchSpeed => this.PlayerController.NetworkcrouchSpeed;
+        public float CrouchSpeed
+        {
+            get => this.PlayerController.NetworkcrouchSpeed;
+            set => this.PlayerController.NetworkcrouchSpeed = value;
+        }
 
         /// <summary>
         /// Gets or sets the player's jump height.
         /// </summary>
-        public float JumpHeight => this.PlayerController.NetworkjumpHeight;
-        
+        public float JumpHeight
+        {
+            get => this.PlayerController.NetworkjumpHeight;
+            set => this.PlayerController.NetworkjumpHeight = value;
+        }
+
         /// <summary>
         /// Gets or sets whether or not the player is noclipping.
         /// </summary>
-        public bool Noclip => this.PlayerController.NetworkisFly;
+        public bool Noclip
+        {
+            get => this.PlayerController.NetworkisFly;
+            set => this.PlayerController.NetworkisFly = value;
+        }
         
         /// <summary>
         /// Gets or sets whether or not the player can be targeted.
         /// </summary>
-        public bool NoTarget => this.PlayerController.NetworknoTarget;
+        public bool NoTarget
+        {
+            get => this.PlayerController.NetworknoTarget;
+            set => this.PlayerController.NetworknoTarget = value;
+        }
+
+        /// <summary>
+        /// Checks if the player has a specific permission.
+        /// </summary>
+        /// <param name="node">The permission to check.</param>
+        /// <returns>Whether or not the player has the permission.</returns>
+        public bool CheckPermision(string node)
+        {
+            return ServerGroups.CheckPermission(this.PlayerController.ConnectionToClient, node);
+        }
         
         public override bool Equals(object obj)
         {
