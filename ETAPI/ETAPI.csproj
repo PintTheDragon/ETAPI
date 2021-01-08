@@ -88,8 +88,10 @@
         <Compile Include="Enums\Role.cs" />
         <Compile Include="Extensions\Items.cs" />
         <Compile Include="Features\Config.cs" />
+        <Compile Include="Features\Entity.cs" />
         <Compile Include="Features\Inventory.cs" />
         <Compile Include="Features\Item.cs" />
+        <Compile Include="Features\Log.cs" />
         <Compile Include="Features\Player.cs" />
         <Compile Include="Features\Round.cs" />
         <Compile Include="Features\Server.cs" />

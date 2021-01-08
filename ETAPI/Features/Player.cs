@@ -4,6 +4,7 @@ using ETAPI.Enums;
 using JetBrains.Annotations;
 using PluginFramework.Classes;
 using UnityEngine;
+using VirtualBrightPlayz.SCP_ET.NPCs.Interfaces;
 using VirtualBrightPlayz.SCP_ET.Player;
 using VirtualBrightPlayz.SCP_ET.ServerGroups;
 
@@ -14,10 +15,57 @@ namespace ETAPI.Features
         private IPlayer player;
         private Inventory inv;
 
+        /// <summary>
+        /// Create a player object from an IPlayer.
+        /// </summary>
+        /// <param name="player">The player object.</param>
         public Player(IPlayer player)
         {
             this.player = player;
             this.inv = new Inventory(this);
+        }
+
+        /// <summary>
+        /// Create a player from a playercontroller.
+        /// </summary>
+        /// <param name="player">The player's playercontroller.</param>
+        /// <returns>The player object.</returns>
+        public static Player From(PlayerController player)
+        {
+            return new Player(player.stats);
+        }
+
+        /// <summary>
+        /// Creates a player from a gameobject.
+        /// </summary>
+        /// <param name="player">The player's gameobject.</param>
+        /// <returns>The player object, or null if the gameobject is not a player.</returns>
+        [CanBeNull]
+        public static Player From(GameObject player)
+        {
+            return player.TryGetComponent<PlayerController>(out var controller) ? Player.From(controller) : null;
+        }
+
+        /// <summary>
+        /// Create a player from an entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns>The player object, or null if the entity is not a player.</returns>
+        [CanBeNull]
+        public static Player From(Entity entity)
+        {
+            return entity.Player;
+        }
+
+        /// <summary>
+        /// Create a player from an entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns>The player object, or null if the entity is not a player.</returns>
+        [CanBeNull]
+        public static Player From(IEntity entity)
+        {
+            return new Entity(entity).Player;
         }
 
         /// <summary>
@@ -122,7 +170,11 @@ namespace ETAPI.Features
         public Role Role
         {
             get => (Role) this.PlayerController.stats.ClassId;
-            set => this.PlayerController.stats.ClassId = (int) value;
+            set
+            {
+                if (value > Role.MTF || value < Role.Spectator) return;
+                this.PlayerController.stats.ClassId = (int) value;
+            }
         }
 
         /// <summary>
