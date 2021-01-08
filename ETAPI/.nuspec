@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+
+    <id>ETAPI</id>
+    <title>ETAPI</title>
+    <version>1.0.0</version>
+    <authors>PintTheDragon</authors>
+    <owners>PintTheDragon</owners>
+    <copyright>Copyright © PintTheDragon 2021</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <repository type="Git" url="https://github.com/PintTheDragon/ETAPI/" />
+    <license type="expression">Apache-2.0</license>
+    <projectUrl>https://github.com/PintTheDragon/ETAPI/</projectUrl>
+    <description>An API to help develop plugins for SCP: Escape Together.</description>
+	<summary>An API to help develop plugins for SCP: Escape Together.</summary>
+
+    <dependencies>
+      <group targetFramework="net472" />
+    </dependencies>
+
+  </metadata>
+
+  <files>
+    <file src="bin\Release\ETAPI.dll" target="lib\net472" />
+  </files>
+
+</package>
