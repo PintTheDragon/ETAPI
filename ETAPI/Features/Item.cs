@@ -1,11 +1,17 @@
-﻿using ETAPI.Extensions;
+﻿using ETAPI.Enums;
+using ETAPI.Extensions;
 using UnityEngine;
 using VirtualBrightPlayz.SCP_ET.Items.ItemSystem;
 
-namespace ETAPI
+namespace ETAPI.Features
 {
     public class Item
     {
+        public override int GetHashCode()
+        {
+            return (item != null ? item.GetHashCode() : 0);
+        }
+
         private ItemBase item;
 
         public Item(ItemBase item)
@@ -53,6 +59,11 @@ namespace ETAPI
         {
             get => this.item;
             set {}
+        }
+
+        public override string ToString()
+        {
+            return ((int) this.ID).ToString();
         }
 
         public override bool Equals(object obj)

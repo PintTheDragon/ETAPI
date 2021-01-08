@@ -1,4 +1,4 @@
-﻿namespace ETAPI
+﻿namespace ETAPI.Enums
 {
     public enum Role
     {

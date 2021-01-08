@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using JetBrains.Annotations;
 
-namespace ETAPI
+namespace ETAPI.Features
 {
     public class Inventory
     {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ETAPI.Enums;
 
 namespace ETAPI.Extensions
 {
