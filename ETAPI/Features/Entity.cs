@@ -4,6 +4,7 @@ using ETAPI.Enums;
 using JetBrains.Annotations;
 using PluginFramework.Classes;
 using UnityEngine;
+using VirtualBrightPlayz.SCP_ET.NPCs;
 using VirtualBrightPlayz.SCP_ET.NPCs.Interfaces;
 using VirtualBrightPlayz.SCP_ET.NPCs.SCP;
 
@@ -20,7 +21,8 @@ namespace ETAPI.Features
             {typeof(SCP1499), Role.Scp1499},
             {typeof(SCP173), Role.Scp173},
             {typeof(SCP939), Role.Scp939},
-            {typeof(SCP966), Role.Scp966}
+            {typeof(SCP966), Role.Scp966},
+            {typeof(NPCClassD), Role.ClassD}
         };
         
         private IEntity entity;
