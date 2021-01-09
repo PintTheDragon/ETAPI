@@ -150,10 +150,7 @@ namespace ETAPI.Features
         /// <summary>
         /// Gets the player's controller.
         /// </summary>
-        public PlayerController PlayerController
-        {
-            get => this.PlayerController;
-        }
+        public PlayerController PlayerController => this.player.PlayerController;
 
         /// <summary>
         /// Gets or sets the player's health.
