@@ -7,6 +7,7 @@ using UnityEngine;
 using VirtualBrightPlayz.SCP_ET.NPCs;
 using VirtualBrightPlayz.SCP_ET.NPCs.Interfaces;
 using VirtualBrightPlayz.SCP_ET.NPCs.SCP;
+using VirtualBrightPlayz.SCP_ET.World.SCP_106;
 
 namespace ETAPI.Features
 {
@@ -43,6 +44,11 @@ namespace ETAPI.Features
         {
             get
             {
+                if (entity.gameObject.TryGetComponent<PocketDim>(out var _))
+                {
+                    return Role.Scp106;
+                }
+                
                 foreach (var component in entity.gameObject.GetComponents<IEntity>())
                 {
                     if (component is IPlayer p)
